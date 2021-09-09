@@ -3,9 +3,9 @@ from rest_framework.viewsets import GenericViewSet
 
 
 class CategoryGenreModelMixin(mixins.CreateModelMixin,
-                      mixins.DestroyModelMixin,
-                      mixins.ListModelMixin,
-                      GenericViewSet):
+                              mixins.DestroyModelMixin,
+                              mixins.ListModelMixin,
+                              GenericViewSet):
     pass
 
 

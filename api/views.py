@@ -8,7 +8,6 @@ from rest_framework.response import Response
 from django.core.mail import send_mail
 from django.contrib.auth.tokens import default_token_generator
 from rest_framework import viewsets, status, filters
-from rest_framework.viewsets import GenericViewSet
 from django.shortcuts import get_object_or_404
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.pagination import PageNumberPagination

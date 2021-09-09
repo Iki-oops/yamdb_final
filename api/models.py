@@ -52,7 +52,7 @@ class Title(models.Model):
         verbose_name='Год выпуска',
         null=True,
         blank=True,
-        validators=[my_year_validator,]
+        validators=[my_year_validator, ]
     )
     category = models.ForeignKey(
         Category,
