@@ -55,7 +55,7 @@ jobs:
         script: |
           sudo docker pull 2143253647898765/yamdb_final
           sudo docker stop $(sudo docker ps -a -q)
-          sudo docker run --rm -d -p 5000:5000 2143253647898765/yamdb_final
+          sudo docker run --rm -d -p 8000:8000 2143253647898765/yamdb_final
 
   send_message:
     runs-on: ubuntu-latest
