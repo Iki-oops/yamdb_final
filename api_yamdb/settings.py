@@ -1,19 +1,19 @@
 import os
-from environs import Env
+# from environs import Env
 
-
-env = Env()
-env.read_env()
+# env = Env()
+# env.read_env
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-SECRET_KEY = env.str('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', default='default')
 
 DEBUG = False
 
-ALLOWED_HOSTS = env.list('HOSTS')
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = os.environ.get('HOSTS', default='[*]')
 
 
 INSTALLED_APPS = [
@@ -64,11 +64,11 @@ WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env.str('DB_NAME'),
-        'USER': env.str('POSTGRES_USER'),
-        'PASSWORD': env.str('POSTGRES_PASSWORD'),
-        'HOST': env.str('DB_HOST'),
-        'PORT': env.str('DB_PORT'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
 
