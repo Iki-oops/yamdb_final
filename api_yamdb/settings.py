@@ -8,7 +8,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='default')
 
 DEBUG = False
 
-ALLOWED_HOSTS = os.environ.get('HOSTS', default='*')
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = os.environ.get('HOSTS', default='*')
 
 
 INSTALLED_APPS = [
