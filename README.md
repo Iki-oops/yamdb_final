@@ -1,11 +1,51 @@
 # REST API для сервиса YaMDb - базы отзывов
-![example workflow](https://github.com/Iki-oops/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 Проект YaMDb собирает отзывы пользователей на произведения. Произведения делятся на категории (книги, фильмы и тд). Произведению может быть присвоен жанр из списка предустановленных (сказка, драма, артхаус и тд)
 
 > Сами произведения в YaMDb не хранятся, здесь нельзя посмотреть фильм или послушать музыку.
 
 Пользователи оставляют к произведениям текстовые отзывы и выставляют произведению рейтинг (оценку в диапазоне от одного до десяти). Из множества оценок автоматически высчитывается средняя оценка произведения. К каждому отзыву можно оставить комментарий.
+
+## Установка
+### Если у вас Windows 10, и вы не установили WSL.
+Установите подсистему Linux [по ссылке](https://docs.microsoft.com/ru-ru/windows/wsl/install-win10). 
+Зайдите [на официальный сайт проекта](https://www.docker.com/products/docker-desktop) и скачайте установочный файл Docker Desktop для вашей операционной системы.
+
+### Команда для клонирования
+Клонируйте репозиторий на локальный сервер:
+```
+git clone https://github.com/Iki-oops/yamdb_final.git
+```
+
+### Нужно настроить переменные окружения .env
+- Создайте файл .env
+- Введите эти значения:
+```
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=<название вашей базы данных>
+POSTGRES_USER=<имя пользователя в postgres>
+POSTGRES_PASSWORD=<пароль пользователя>
+DB_HOST=db  # Сюда можете прописать localhost, либо оставить, если будете использовать docker-compose
+DB_PORT=5432
+```
+
+> Создайте виртуальное окружение и скачайте все необходимые пакеты
+
+### Запуск на docker-compose(Можете пропустить этот шаг, если не будете использовать docker-compose)
+Команда для запуска docker-compose:
+```
+docker-compose up
+```
+Команда для миграций, создания суперпользователя и сбора статики:
+```
+docker-compose exec web python manage.py migrate --noinput
+docker-compose exec web python manage.py createsuperuser
+docker-compose exec web python manage.py collectstatic --no-input
+```
+Команда для остановки запущенных docker-контейнеров и удаление их:
+```
+docker-compose down
+```
 
 ## Алгоритм регистрации пользователей
 
@@ -35,12 +75,14 @@ YaMDB отправляет письмо с кодом подтверждения
 - Создавать и удалять произведения, категории и жанры
 - Может назначать роли пользователям
 
-## Установка
-### Если у вас Windows 10, и вы не установили WSL.
-Установите подсистему Linux [по ссылке](https://docs.microsoft.com/ru-ru/windows/wsl/install-win10). 
-Зайдите [на официальный сайт проекта](https://www.docker.com/products/docker-desktop) и скачайте установочный файл Docker Desktop для вашей операционной системы.
+## Стек технологий
+Python 3, Django 2.2, Django REST Framework, PostgreSQL, nginx, GitLab, Yandex Cloud, Simple-JWT
 
-Команда для клонирования:
-```
-git clone 
-```
+## Реализован в команде:
+- Я(Бамбагаев Дмитрий Мунко-Жаргалович)
+- Алексей Лобарев(https://github.com/loskuta42)
+- Ольга Еремеева(https://github.com/Kartezi)
+
+![example workflow](https://github.com/Iki-oops/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+
+### Развернутый на сервере проект(http://178.154.246.246/api/v1/)
