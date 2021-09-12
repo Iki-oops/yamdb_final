@@ -33,3 +33,4 @@ psycopg2-binary==2.8.5
 # PyJWT==1.7.1
 PyJWT
 sqlparse==0.3.1
+environs==8.0.0
